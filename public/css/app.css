@@ -1,0 +1,10 @@
+
+.mainContent
+{
+  margin-top: 80px;
+  position: relative !important;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+}
