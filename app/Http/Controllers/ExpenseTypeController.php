@@ -96,11 +96,13 @@ class ExpenseTypeController extends BaseController
             $expenseType->name = $request["name"];
             $expenseType->created_by = 1;//COlocar o usuario logado
             $expenseType->save();
+            // dd($expenseType);
                 
             return back();
         } 
         catch (\Throwable $th) 
         {
+            dd($th);
             return back()->withError("Houve um erro ao salvar o registro");
         }
 

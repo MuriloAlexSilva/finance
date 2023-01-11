@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Expense;
+use App\Models\Revenue;
 
 class HomeController extends BaseController
 {
@@ -15,7 +17,12 @@ class HomeController extends BaseController
     public function index()
     {
         //dd('Chegou aqui');
-        return view('home');
+        $today = \Carbon\Carbon::today();
+        // dd($today);
+        $expense = Expense::whereYear('date',$today)->whereMonth('date',$today)->sum('value');
+        $revenue = Revenue::whereYear('date',$today)->whereMonth('date',$today)->sum('value');
+        // dd($revenue);
+        return view('home')->with(['expense' => $expense,'revenue' => $revenue,'dateToday' => $today]);
     }
 
     /**

@@ -89,14 +89,17 @@ class ExpenseSubTypeController extends BaseController
         try 
         {
             $isStore = $expenseSubType == null;
+            // dd($expenseSubType);
 
             if($isStore)
                 $expenseSubType = new ExpenseSubType();
 
             $expenseSubType->name = $request["name"];
             $expenseSubType->created_by = 1;//COlocar o usuario logado
+            // $expenseSubType->id_expense_sub_type =1 ;
+            // dd($expenseSubType);
             $expenseSubType->save();
-                
+            // dd($expenseSubType);
             return back();
         } 
         catch (\Throwable $th) 

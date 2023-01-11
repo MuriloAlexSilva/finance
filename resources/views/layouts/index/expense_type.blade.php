@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container container-fluid">
+  <div class="container container-fluid" style="margin-top:100px; width:70%">
     <div class="row">
       <div class="col-11">
         <h3>Tipos de Despesas</h3>

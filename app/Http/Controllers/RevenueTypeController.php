@@ -86,6 +86,7 @@ class RevenueTypeController extends BaseController
     //---------------------------------------------------------------------------------
     protected function Save(Request $request, $revenueType = null)
     {
+        // dd($request);
         try 
         {
             $isStore = $revenueType == null;
@@ -96,11 +97,13 @@ class RevenueTypeController extends BaseController
             $revenueType->name = $request["name"];
             $revenueType->created_by = 1;//COlocar o usuario logado
             $revenueType->save();
+            // dd($revenueType);
                 
             return back();
         } 
         catch (\Throwable $th) 
         {
+            dd($th);    
             return back()->withError("Houve um erro ao salvar o registro");
         }
 

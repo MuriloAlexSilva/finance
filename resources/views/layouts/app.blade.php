@@ -17,13 +17,13 @@
 
     <title>Controle Financeiro</title>
 </head>
-<body>
+<body  style="background-color:Gainsboro;">
     <nav class="navbar navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="#">Controle Financeiro</a>
+            <a class="navbar-brand" href="{{route('home')}}">Controle Financeiro</a>
             <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu Principal</h5>
@@ -34,13 +34,22 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{route('home')}}">Home</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{route('revenue.index')}}">Receitas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{route('expense.index')}}">Despesas</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Cadastros
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">
                                 <li>
-                                    <a class="dropdown-item" aria-current="page" href="{{route('revenue_type.index')}}">Tipos de Recebimentos</a>
+                                    <a class="dropdown-item" aria-current="page" href="{{route('revenue_type.index')}}">Tipos de Receitas</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" aria-current="page" href="{{route('revenue_sub_type.index')}}">Subtipos de Receitas</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" aria-current="page" href="{{route('expense_type.index')}}">Tipos de Despesas</a>
