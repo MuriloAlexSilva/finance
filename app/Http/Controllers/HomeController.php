@@ -16,12 +16,25 @@ class HomeController extends BaseController
      */
     public function index()
     {
-        //dd('Chegou aqui');
-        $today = \Carbon\Carbon::today();
-        // dd($today);
-        $expense = Expense::whereYear('date',$today)->whereMonth('date',$today)->sum('value');
-        $revenue = Revenue::whereYear('date',$today)->whereMonth('date',$today)->sum('value');
-        // dd($revenue);
+        $list           = [];
+        $today          = \Carbon\Carbon::today();
+        $expense        = Expense::whereYear('date',$today)->whereMonth('date',$today)->sum('value');
+        $revenue        = Revenue::whereYear('date',$today)->whereMonth('date',$today)->sum('value');
+        $listRevenue    = Revenue::whereYear('date',$today)->orderBy('date')->get();
+        $month          = (count($listRevenue) > 0) ? strval(date('m/Y',strtotime($listRevenue[0]['date']))) : 0;
+        $list[$month]   = 0;
+        
+        foreach($listRevenue as $item)
+        {            
+            if(date('m/Y',strtotime($item->date)) != $month)
+            {
+                $month = strval(date('m/Y',strtotime($item->date)));
+                $list[$month] = 0;
+            }
+            $list[$month] = $list[$month] + $item->value;   
+        }
+        dd($list); 
+
         return view('home')->with(['expense' => $expense,'revenue' => $revenue,'dateToday' => $today]);
     }
 

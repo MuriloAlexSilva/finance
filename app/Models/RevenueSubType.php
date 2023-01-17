@@ -9,7 +9,7 @@ use App\User;
 
 class RevenueSubType extends Model
 {
-    protected $table        =   'revenuesubtype';
+    protected $table        =   'RevenueSubType';
     protected $primaryKey   =   'id_revenue_sub_type';
 
     use SoftDeletes;

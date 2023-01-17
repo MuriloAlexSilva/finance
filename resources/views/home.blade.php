@@ -2,9 +2,8 @@
 
 @section('content')
 {{-- @dd($expense) --}}
-  <div class="container container-fluid" style="margin-top:100px; width:80% ">
+  <div class="container container-fluid" style="margin-top:100px; width:100% ">
     <div class="row mb-3 h4 col-md-12">
-    {{-- @dd() --}}
       <div class="col-md-6"><strong>{{$dateToday->format('M/Y')}}</strong></div>
       <div class="col-md-1 offset-3">
         <a href="{{route('revenue.create')}}" class="btn">
@@ -17,6 +16,7 @@
         </a>
       </div>
     </div>
+
     <div class="row" style="height:100px">
       <div class="row col-md-3 bg-white rounded align-items-center" style="">
         <div class="h3 text-success col-md-3">
@@ -43,6 +43,25 @@
         </div>
       </div>
     </div>
+
+    <div class="container container-fluid mt-4 row">
+      <div class="col-sm-6">
+        <table class="table table-striped">
+          <thead>
+            <th>Mês/Ano</th>
+            <th>Receitas</th>
+            <th>Despesas</th>
+            <th>Saldo</th>
+          </thead>
+          <tbody>
+            <td>teste2</td>
+            <td>teste2</td>
+            <td>teste2</td>
+            <td>teste2</td>
+          </tbody>
+        </table>
+      </div>
+
 
   </div>
 @endsection

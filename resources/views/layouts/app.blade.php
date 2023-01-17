@@ -17,7 +17,7 @@
 
     <title>Controle Financeiro</title>
 </head>
-<body  style="background-color:Gainsboro;">
+<body class="container" style="background-color:Gainsboro;">
     <nav class="navbar navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">

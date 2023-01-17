@@ -9,7 +9,7 @@ use App\User;
 
 class Revenue extends Model
 {
-    protected $table        =   'revenue';
+    protected $table        =   'Revenue';
     protected $primaryKey   =   'id_revenue';
 
     use SoftDeletes;
