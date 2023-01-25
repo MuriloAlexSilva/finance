@@ -33,7 +33,7 @@ class HomeController extends BaseController
             }
             $list[$month] = $list[$month] + $item->value;   
         }
-        dd($list); 
+        // dd($list); 
 
         return view('home')->with(['expense' => $expense,'revenue' => $revenue,'dateToday' => $today]);
     }

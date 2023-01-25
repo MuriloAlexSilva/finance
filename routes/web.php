@@ -21,10 +21,11 @@ use App\Http\Controllers\ExpenseSubTypeController;
 */
 
 Route::get('/', function () {
-    return redirect()->route('home');
+    return view('welcome');
 });
 
-// Route::get('/lista', [DashboardController::class, 'getLogteste'])->name('logteste');
+Auth::routes();
+
 Route::get('home',                      [HomeController::class, 'index']    )->name('home');
 Route::resource('revenue_type',         RevenueTypeController::class        );
 Route::resource('revenue_sub_type',     RevenueSubTypeController::class     );
