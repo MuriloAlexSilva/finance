@@ -26,10 +26,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('home',                      [HomeController::class, 'index']    )->name('home');
-Route::resource('revenue_type',         RevenueTypeController::class        );
-Route::resource('revenue_sub_type',     RevenueSubTypeController::class     );
-Route::resource('expense_type',         ExpenseTypeController::class        );
-Route::resource('expense_sub_type',     ExpenseSubTypeController::class     );
-Route::resource('expense',              ExpenseController::class            );
-Route::resource('revenue',              RevenueController::class            );
+Route::get('home',                      [HomeController::class, 'index']    )->name('home')->middleware('auth');
+Route::resource('revenue_type',         RevenueTypeController::class        )->middleware('auth');
+Route::resource('revenue_sub_type',     RevenueSubTypeController::class     )->middleware('auth');
+Route::resource('expense_type',         ExpenseTypeController::class        )->middleware('auth');
+Route::resource('expense_sub_type',     ExpenseSubTypeController::class     )->middleware('auth');
+Route::resource('expense',              ExpenseController::class            )->middleware('auth');
+Route::resource('revenue',              RevenueController::class            )->middleware('auth');

@@ -7,6 +7,8 @@ use App\Models\RevenueType;
 use App\User;
 use Illuminate\Http\Request;
 
+use Auth;
+
 class RevenueTypeController extends BaseController
 {
     protected $layoutName   = "revenue_type";
@@ -95,7 +97,7 @@ class RevenueTypeController extends BaseController
                 $revenueType = new RevenueType();
 
             $revenueType->name = $request["name"];
-            $revenueType->created_by = 1;//COlocar o usuario logado
+            $revenueType->created_by =  Auth::user()->id;
             $revenueType->save();
             // dd($revenueType);
                 

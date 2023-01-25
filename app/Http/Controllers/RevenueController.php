@@ -9,6 +9,8 @@ use App\Models\RevenueSubType;
 use App\User;
 use Illuminate\Http\Request;
 
+use Auth;
+
 class RevenueController extends BaseController
 {
     protected $layoutName   = "revenue";
@@ -121,7 +123,7 @@ class RevenueController extends BaseController
             // $payment->value = str_replace(['.', ','], ['', '.'], $request["value"]); // Essa linha remove os '.' e substitui ',' por '.' deixando 999.999,99 foramtado como 999999.99
             $revenue->value = $request['value'];
             $revenue->description = $request['description'];
-            $revenue->created_by = 1;//COlocar o usuario logado
+            $revenue->created_by =  Auth::user()->id;
             $revenue->save();
             // dd($revenue);
             return redirect()->route('home'); // Quando vem do edit da erro na rota

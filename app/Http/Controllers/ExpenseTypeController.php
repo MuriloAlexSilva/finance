@@ -7,6 +7,8 @@ use App\Models\ExpenseType;
 use App\User;
 use Illuminate\Http\Request;
 
+use Auth;
+
 class ExpenseTypeController extends BaseController
 {
     protected $layoutName   = "expense_type";
@@ -94,7 +96,7 @@ class ExpenseTypeController extends BaseController
                 $expenseType = new ExpenseType();
 
             $expenseType->name = $request["name"];
-            $expenseType->created_by = 1;//COlocar o usuario logado
+            $expenseType->created_by =  Auth::user()->id;
             $expenseType->save();
             // dd($expenseType);
                 

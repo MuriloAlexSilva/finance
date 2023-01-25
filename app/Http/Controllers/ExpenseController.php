@@ -9,6 +9,8 @@ use App\Models\ExpenseSubType;
 use App\User;
 use Illuminate\Http\Request;
 
+use Auth;
+
 class ExpenseController extends BaseController
 {
     protected $layoutName   = "expense";
@@ -123,7 +125,7 @@ class ExpenseController extends BaseController
             $expense->value = $request['value'];
             $expense->date = $request['date'];//Validar a data
             $expense->description = $request['description'];
-            $expense->created_by = 1;//COlocar o usuario logado
+            $expense->created_by = Auth::user()->id;
             // dd($expense);
             $expense->save();
             return redirect()->route('home'); // Quando vem do edit da erro na rota

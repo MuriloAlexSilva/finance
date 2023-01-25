@@ -7,6 +7,8 @@ use App\Models\ExpenseSubType;
 use App\User;
 use Illuminate\Http\Request;
 
+use Auth;
+
 class ExpenseSubTypeController extends BaseController
 {
     protected $layoutName   = "expense_sub_type";
@@ -95,7 +97,7 @@ class ExpenseSubTypeController extends BaseController
                 $expenseSubType = new ExpenseSubType();
 
             $expenseSubType->name = $request["name"];
-            $expenseSubType->created_by = 1;//COlocar o usuario logado
+            $expenseSubType->created_by =  Auth::user()->id;
             // $expenseSubType->id_expense_sub_type =1 ;
             // dd($expenseSubType);
             $expenseSubType->save();

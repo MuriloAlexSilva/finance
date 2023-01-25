@@ -7,6 +7,8 @@ use App\Models\RevenueSubType;
 use App\User;
 use Illuminate\Http\Request;
 
+use Auth;
+
 class RevenueSubTypeController extends BaseController
 {
     protected $layoutName   = "revenue_sub_type";
@@ -94,7 +96,7 @@ class RevenueSubTypeController extends BaseController
                 $revenueSubType = new RevenueSubType();
 
             $revenueSubType->name = $request["name"];
-            $revenueSubType->created_by = 1;//COlocar o usuario logado
+            $revenueSubType->created_by =  Auth::user()->id;
             $revenueSubType->save();
                 
             return back();
