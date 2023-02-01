@@ -16,26 +16,47 @@ class HomeController extends BaseController
      */
     public function index()
     {
-        $list           = [];
-        $today          = \Carbon\Carbon::today();
-        $expense        = Expense::whereYear('date',$today)->whereMonth('date',$today)->sum('value');
-        $revenue        = Revenue::whereYear('date',$today)->whereMonth('date',$today)->sum('value');
-        $listRevenue    = Revenue::whereYear('date',$today)->orderBy('date')->get();
-        $month          = (count($listRevenue) > 0) ? strval(date('m/Y',strtotime($listRevenue[0]['date']))) : 0;
-        $list[$month]   = 0;
+        $list                               = [];
+        $today                              = \Carbon\Carbon::today();
+        $expense                            = Expense::whereYear('date',$today)->whereMonth('date',$today)->sum('value');
+        $listExpense                        = Expense::whereYear('date',$today)->orderBy('date')->get();
+        $revenue                            = Revenue::whereYear('date',$today)->whereMonth('date',$today)->sum('value');
+        $listRevenue                        = Revenue::whereYear('date',$today)->orderBy('date')->get();
+        $monthRevenue                       = (count($listRevenue) > 0) ? strval(date('m/Y',strtotime($listRevenue[0]['date']))) : 0;
+        $monthExpense                       = (count($listExpense) > 0) ? strval(date('m/Y',strtotime($listExpense[0]['date']))) : 0;
+        $list['Revenue'][$monthRevenue]     = 0;
+        $list['Expense'][$monthExpense]     = 0;
         
         foreach($listRevenue as $item)
         {            
-            if(date('m/Y',strtotime($item->date)) != $month)
+            if(date('m/Y',strtotime($item->date)) != $monthRevenue)
             {
-                $month = strval(date('m/Y',strtotime($item->date)));
-                $list[$month] = 0;
+                $monthRevenue = strval(date('m/Y',strtotime($item->date)));
+                $list['Revenue'][$monthRevenue] = 0;
             }
-            $list[$month] = $list[$month] + $item->value;   
+            $list['Revenue'][$monthRevenue] = $list['Revenue'][$monthRevenue] + $item->value;   
         }
-        // dd($list); 
+        foreach($listExpense as $item)
+        {            
+            if(date('m/Y',strtotime($item->date)) != $monthExpense)
+            {
+                $monthExpense = strval(date('m/Y',strtotime($item->date)));
+                $list['Expense'][$monthExpense] = 0;
+            }
+            $list['Expense'][$monthExpense] = $list['Expense'][$monthExpense] + $item->value;   
+        }
 
-        return view('home')->with(['expense' => $expense,'revenue' => $revenue,'dateToday' => $today]);
+        // dd($list['Revenue']); 
+        $revenueChart = json_encode($list['Revenue']);
+        $expenseChart = json_encode($list['Expense']);
+
+        return view('home')->with([ 'expense'   => $expense,
+                                    'revenueChart'   => $revenueChart,
+                                    'expenseChart'   => $expenseChart,
+                                    'revenue'   => $revenue,
+                                    'list'      => $list,
+                                    'dateToday' => $today
+                                  ]);
     }
 
     /**
