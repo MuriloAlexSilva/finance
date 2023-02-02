@@ -43,18 +43,6 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="mt-4 mr-4 col-sm-6">
-        <center>
-          <canvas id="revenue" class="h-100 w-75"></canvas>
-        </center>
-      </div>
-      <div class="mt-4 mr-4 col-sm-6">
-        <center>
-          <canvas id="expense" class="h-100 w-75"></canvas>
-        </center>
-      </div>
-    </div>
 
     <div class="container container-fluid mt-4 row">
       <div class="col-sm-6">
@@ -113,13 +101,25 @@
           </tbody>
         </table>
       </div>
+      <div class="row">
+      <div class="mt-4 mr-4 col-sm-6">
+        <center>
+          <canvas id="revenue" class="h-100 w-75"></canvas>
+        </center>
+      </div>
+      <div class="mt-4 mr-4 col-sm-6">
+        <center>
+          <canvas id="expense" class="h-100 w-75"></canvas>
+        </center>
+      </div>
+    </div>
     </div>
     <br><br><br><br><br><br>
 @endsection
 {{-- @dd() --}}
 @section('scripts')
   <script>
-    var revenueId    = document.getElementById("revenue");
+    var revenueId    = document.getElementById("revenue");//Da para alterar o id para o byId dentro da function
     var expenseId    = document.getElementById("expense");
     var revenueType  = JSON.parse(`<?php echo json_encode(array_keys($list['Revenue'])); ?>`);
     var revenueValue = JSON.parse(`<?php echo json_encode(array_values($list['Revenue'])); ?>`);
@@ -159,10 +159,14 @@
           }]
         },
         options:{
-          legend:{display:true},
+          plugins:{
+            legend:{
+              display:false
+            },
+          },
           scales:{
             beginAtZero:true,
-          }
+          },
         }
       });
     }

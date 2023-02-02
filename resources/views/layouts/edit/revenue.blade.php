@@ -68,14 +68,14 @@
           </div>
         </div>
 
-        @if(isset($item))
+        {{-- @if(isset($item))
           <div class="form-group row pt-4">
             <label for="" class="col-md-4 col-form-label text-md-right">{{ 'Valor' }}</label>
             <div class="col-md-7">
               <label for="" class="form-control">{{ $item->value }}</label>
             </div>
           </div>
-        @else
+        @else --}}
           <div class="form-group row pt-4 ">
             <label for="value" class="col-md-4 col-form-label text-md-right obg">{{ __('Valor') }}</label>
             <div class="col-md-3">
@@ -87,20 +87,21 @@
               @enderror
             </div>
           </div>
-        @endif
+        {{-- @endif --}}
 
-        @if(isset($item))
+        {{-- @if(isset($item))
           <div class="form-group row pt-4">
             <label for="" class="col-md-4 col-form-label text-md-right">{{ 'Data' }}</label>
             <div class="col-md-7">
               <label for="" class="form-control">{{ \Carbon\Carbon::parse($item->date)->format("d/m/Y") }}</label>
             </div>
           </div>
-        @else
+        @else --}}
+        {{-- @dd($item->date) --}}
           <div class="form-group row pt-4">
             <label for="date" class="col-md-4 col-form-label text-md-right obg">{{ __('Data') }}</label>
             <div class="col-md-5">
-              <input id="date" type="date" class="form-control @error('date') is-invalid @enderror" name="date" value="{{ old('date') != null ? old('date') : (isset($item) ? $item->date : \Carbon\Carbon::now()->format('Y-m-d') ) }}" required autocomplete="date">
+              <input id="date" type="date" class="form-control @error('date') is-invalid @enderror" name="date" value="{{ old('date') != null ? old('date') : (isset($item) ? \Carbon\Carbon::parse($item->date)->format('Y-m-d') : \Carbon\Carbon::now()->format('Y-m-d')) }}" required autocomplete="date">
               @error('date')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -108,12 +109,11 @@
               @enderror
             </div>
           </div>
-        @endif
-
+        {{-- @endif --}}
         <div class="form-group row pt-4">
           <label for="description" class="col-md-4 col-form-label text-md-right obg">{{ __('Descrição') }}</label>
           <div class="col-md-8">
-            <input type="text" id="description" class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description" {{ isset($item) ? "disabled" : ""}} value='{{ old("description") ? old("description") : (isset($item) ? $item->description : "")  }}'/>
+            <input type="text" id="description" class="form-control @error('description') is-invalid @enderror" name="description"  value='{{ old("description") ? old("description") : (isset($item) ? $item->description : "")  }}'/>
             @error('description')
               <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

@@ -30,6 +30,7 @@ abstract class BaseController extends Controller
     //---------------------------------------------------
     public function commonUpdate(Request $request, $id)
     {
+        // dd($request);
         try 
         {
             $item = $this->modelName::findOrfail($id);

@@ -103,8 +103,7 @@ class ExpenseController extends BaseController
      */
     public function update(ExpenseRequest $request, $id)
     {
-        if($data = $request->validated())
-            return $this->commonUpdate($request,$id);
+        return $this->commonUpdate($request,$id);
     }
 
     //---------------------------------------------------------------------------------

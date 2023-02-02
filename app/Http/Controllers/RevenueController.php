@@ -80,11 +80,13 @@ class RevenueController extends BaseController
             $item               = Revenue::findOrFail($id);
             // dd($item);
             $revenueTypeList    = revenueType::orderBy('name')->get();
+            $revenueSubTypeList = revenueSubType::orderBy('name')->get();
             // dd($revenueTypeList);
             // dd($revenueTypeList);
             return $this->RenderEditPage([
                                             'item'                  => $item,
-                                            'revenueTypeList'       => $revenueTypeList
+                                            'revenueTypeList'       => $revenueTypeList,
+                                            'revenueSubTypeList'       => $revenueSubTypeList
                                         ]);
 
         } catch (\Throwable $th) {
@@ -101,8 +103,7 @@ class RevenueController extends BaseController
      */
     public function update(RevenueRequest $request, $id)
     {
-        if($data = $request->validated())
-            return $this->commonUpdate($request,$id);
+        return $this->commonUpdate($request,$id);
     }
 
     //---------------------------------------------------------------------------------
@@ -113,7 +114,7 @@ class RevenueController extends BaseController
         try 
         {
             $isStore = $revenue == null;
-
+                // dd($revenue);
             if($isStore)
                 $revenue = new Revenue();
 
@@ -124,8 +125,16 @@ class RevenueController extends BaseController
             $revenue->value = $request['value'];
             $revenue->description = $request['description'];
             $revenue->created_by =  Auth::user()->id;
+
+            // dd($revenue);
+            if($request['is_recurrent'] == 1)
+            {
+                
+            }
+            // dd($revenue);
             $revenue->save();
             // dd($revenue);
+            
             return redirect()->route('home'); // Quando vem do edit da erro na rota
         
         } 
