@@ -11,7 +11,7 @@
         @endif
       </div>
       <div class="">
-        <a href="{{route('revenue.index')}}" class="btn btn-dark">
+        <a href="{{route('revenue.index')}}" class="btn btn-danger">
           <i class="fa fa-arrow-left "></i>
         </a>
       </div>
@@ -79,7 +79,7 @@
           <div class="form-group row pt-4 ">
             <label for="value" class="col-md-4 col-form-label text-md-right obg">{{ __('Valor') }}</label>
             <div class="col-md-3">
-              <input type="text" id="value" class="money-entry form-control @error('value') is-invalid @enderror" name="value" value="{{ old('value') != null ? old('value') : (isset($item) ? $item->value : '') }}" required autocomplete="value"  required></input>
+              <input type="text" id="value" class="money form-control @error('value') is-invalid @enderror" name="value" value="{{ old('value') != null ? old('value') : (isset($item) ? $item->value : '') }}" required autocomplete="value"  required></input>
               @error('value')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -124,7 +124,7 @@
         
         <div class="form-group row mb-0" style="margin-top: 50px;">
           <div class="col-2 offset-8">
-            <button id="btnSubmit" name="btnSubmit" class="btn btn-dark" type="submit">
+            <button id="btnSubmit" name="btnSubmit" class="btn btn-success" type="submit">
               {{__('Salvar')}}
             </button>
           </div>
@@ -139,7 +139,7 @@
   <script>
     $(document).ready(function()
     {
-      $('.money-entry').mask('#.##0,00', {reverse: true});
+      $('.money').mask('#.##0,00', {reverse: true});
     });
   </script>
 @endsection

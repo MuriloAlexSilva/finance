@@ -2,8 +2,9 @@
 
 @section('content')
 {{-- @dd($expense) --}}
-  <div class="container container-fluid mt-4">
-    <div class="row mb-3 h4 col-md-12">
+  <div class="container container-fluid mt-4" style="width:80%">
+
+    <div class="row mb-3 h4">
       <div class="col-md-6"><strong>{{$dateToday->format('M/Y')}}</strong></div>
       <div class="col-md-1 offset-3">
         <a href="{{route('revenue.create')}}" class="btn">
@@ -17,28 +18,28 @@
       </div>
     </div>
 
-    <div class="row" style="height:100px" >
-      <div class="row col-md-3 rounded align-items-center" style="background-color:rgba(75, 192, 192,0.4)">
-        <div class="h3 text-success col-md-3">
+    <div class="container container-fluid row" style="height:100px" >
+      <div class="row col-sm rounded align-items-center" style="background-color:rgba(75, 192, 192,0.4)">
+        <div class="h3 text-success col-sm-3">
           <i class="fa fa-arrow-down" aria-hidden="true"></i>
         </div>
-        <div class="h5 col-md-9">
+        <div class="h5 col-sm-9">
           <strong>R$ {{ number_format($revenue, 2, ',', '.') }}</strong>
         </div>
       </div>
-      <div class="row col-md-3 align-items-center offset-1 rounded" style="background-color:rgba(255, 99, 132, 0.2)">
-        <div class="h3 text-danger col-md-3">
+      <div class="row col-sm align-items-center offset-1 rounded" style="background-color:rgba(255, 99, 132, 0.2)">
+        <div class="h3 text-danger col-sm-3">
           <i class="fa fa-arrow-up" aria-hidden="true"></i>
         </div>
-        <div class="h5 col-md-9">
+        <div class="h5 col-sm-9">
           <strong>R$ -{{ number_format($expense, 2, ',', '.') }}</strong>
         </div>
       </div>
-      <div class="row col-md-3 offset-1 rounded align-items-center" style="background-color:Gainsboro;">
-        <div class="h3 text-info col-md-3">
+      <div class="row col-sm offset-1 rounded align-items-center" style="background-color:Gainsboro;">
+        <div class="h3 text-info col-sm-3">
           <i class="fa fa-university" aria-hidden="true"></i>
         </div>
-        <div class="h5 col-md-9">
+        <div class="h5 col-sm-9">
           <strong>R$ 50.000,00</strong>
         </div>
       </div>
@@ -102,17 +103,17 @@
         </table>
       </div>
       <div class="row">
-      <div class="mt-4 mr-4 col-sm-6">
-        <center>
-          <canvas id="revenue" class="h-100 w-75"></canvas>
-        </center>
+        <div class="mt-4 mr-4 col-sm-6">
+          <center>
+            <canvas id="revenue" class="h-100 w-75"></canvas>
+          </center>
+        </div>
+        <div class="mt-4 mr-4 col-sm-6">
+          <center>
+            <canvas id="expense" class="h-100 w-75"></canvas>
+          </center>
+        </div>
       </div>
-      <div class="mt-4 mr-4 col-sm-6">
-        <center>
-          <canvas id="expense" class="h-100 w-75"></canvas>
-        </center>
-      </div>
-    </div>
     </div>
     <br><br><br><br><br><br>
 @endsection

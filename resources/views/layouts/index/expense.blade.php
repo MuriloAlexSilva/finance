@@ -7,12 +7,12 @@
         <h3>Despesas</h3>
       </div>
       <div class="col-1">
-        <a href="{{route('expense.create')}}" class="btn">
-          <i class="fa fa-plus-square fa-2x"></i>
+        <a href="{{route('revenue_type.create')}}" class="btn btn-outline">
+          <i class="fa fa-plus fa-lg" style="color:green"></i>
         </a>
       </div>
     </div>
-    <table class="table table-dark table-responsive table-hover">
+    <table class="table table-success nowrap responsive table-hover">
       <thead>
         <th>Data</th>
         <th>Tipo de Despesa</th>
@@ -54,7 +54,7 @@
     </table>
     <div class="d-flex justify-content-center">
       {{$expenseList->appends(request()->all())->links()}}
-      <div class="d-flex align-items-center" style="padding-left:10px; ">
+      <div class="d-flex align-items-center pl-3">
         Exibindo {{$expenseList->count()}}
         de {{$expenseList->total()}} registros
       </div>

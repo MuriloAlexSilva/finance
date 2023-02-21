@@ -7,12 +7,12 @@
         <h3>Subtipos de Receitas</h3>
       </div>
       <div class="col-1">
-        <a href="{{route('revenue_sub_type.create')}}" class="btn">
-          <i class="fa fa-plus-square fa-2x"></i>
+        <a href="{{route('revenue_type.create')}}" class="btn btn-outline">
+          <i class="fa fa-plus fa-lg" style="color:green"></i>
         </a>
       </div>
     </div>
-    <table class="table table-dark table-responsive table-hover">
+    <table class="table table-success nowrap responsive table-hover">
       <thead>
         <th>Nome</th>
         <th></th>
@@ -42,7 +42,7 @@
     </table>
     <div class="d-flex justify-content-center">
       {{$revenueSubTypeList->appends(request()->all())->links()}}
-      <div class="d-flex align-items-center" style="padding-left:10px; ">
+      <div class="d-flex align-items-center pl-3">
         Exibindo {{$revenueSubTypeList->count()}}
         de {{$revenueSubTypeList->total()}} registros
       </div>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RevenueTypeRequest;
 use App\Models\RevenueType;
-use App\User;
 use Illuminate\Http\Request;
 
 use Auth;
@@ -20,9 +19,8 @@ class RevenueTypeController extends BaseController
      */
     public function index()
     {
-        $revenueTypeList = RevenueType::orderBy('name')->paginate(10);
-
-        // $revenueType->paginate(1)->withQueryString();
+        $revenueTypeList = RevenueType::orderBy('name')
+                                      ->paginate(4);
 
         return $this->RenderIndexPage(['revenueTypeList' => $revenueTypeList]);
     }

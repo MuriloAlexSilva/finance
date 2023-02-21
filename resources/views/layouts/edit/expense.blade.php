@@ -11,7 +11,7 @@
         @endif
       </div>
       <div class="">
-        <a href="{{route('expense.index')}}" class="btn btn-dark">
+        <a href="{{route('expense.index')}}" class="btn btn-danger">
           <i class="fa fa-arrow-left "></i>
         </a>
       </div>
@@ -118,7 +118,7 @@
         
         <div class="form-group row mb-0" style="margin-top: 50px;">
           <div class="col-2 offset-8">
-            <button id="btnSubmit" name="btnSubmit" class="btn btn-dark" type="submit">
+            <button id="btnSubmit" name="btnSubmit" class="btn btn-success" type="submit">
               {{__('Salvar')}}
             </button>
           </div>

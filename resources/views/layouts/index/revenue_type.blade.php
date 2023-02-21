@@ -1,50 +1,55 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container container-fluid" style="margin-top:100px; width:70%">
-    <div class="row">
-      <div class="col-11">
-        <h3>Tipos de Receitas</h3>
+  <div class="container" style="margin-top:20px; width:70%">
+    <div class="page-body">
+      <div class="row">
+        <div class="col-11">
+          <h3>Tipos de Receitas</h3>
+        </div>
+        <div class="col-1">
+          <a href="{{route('revenue_type.create')}}" class="btn btn-outline">
+            <i class="fa fa-plus fa-lg" style="color:green"></i>
+          </a>
+
       </div>
-      <div class="col-1">
-        <a href="{{route('revenue_type.create')}}" class="btn">
-          <i class="fa fa-plus-square fa-2x"></i>
-        </a>
-      </div>
-    </div>
-    <table class="table table-dark table-responsive table-hover">
-      <thead>
-        <th>Nome</th>
-        <th></th>
-      </thead>
-      <tbody>
-        @foreach ($revenueTypeList as $revenueType)
+      <table class="table table-success nowrap responsive table-hover" style="width: 100%;">
+        <thead>
           <tr>
-            <td>{{$revenueType->name}}</td>
-            <td style="text-align:end" class="">
-              @if($revenueType->deleted_at == null)
-                <a href="{{route('revenue_type.edit',$revenueType->id_revenue_type)}}" class="btn btn-info">
-                  <i class="fa fa-edit"></i>
-                </a>
-                <a href="#" class="btn btn-danger" onclick="deleteClick({{$revenueType->id_revenue_type}})">
-                  <i class="fa fa-trash"></i>
-                </a>
-                <form id="delete-form-{{$revenueType->id_revenue_type}}" action="{{route('revenue_type.destroy',$revenueType->id_revenue_type)}}"
-                      method="POST" style="display:none;">
-                  @csrf
-                  @method('DELETE')
-                </form>
-              @endif
-            </td>
+            <th>Nome</th>
+            <th></th>
           </tr>
-        @endforeach
-      </tbody>
-    </table>
-    <div class="d-flex justify-content-center">
-      {{$revenueTypeList->appends(request()->all())->links()}}
-      <div class="d-flex align-items-center" style="padding-left:10px; ">
-        Exibindo {{$revenueTypeList->count()}}
-        de {{$revenueTypeList->total()}} registros
+        </thead>
+        <tbody>
+          @foreach ($revenueTypeList as $revenueType)
+            <tr>
+              <td>{{$revenueType->name}}</td>
+              <td style="text-align:end" class="">
+                @if($revenueType->deleted_at == null)
+                  <a href="{{route('revenue_type.edit',$revenueType->id_revenue_type)}}" class="btn btn-info">
+                    <i class="fa fa-edit"></i>
+                  </a>
+                  <a href="#" class="btn btn-danger" onclick="deleteClick({{$revenueType->id_revenue_type}})">
+                    <i class="fa fa-trash"></i>
+                  </a>
+                  <form id="delete-form-{{$revenueType->id_revenue_type}}" action="{{route('revenue_type.destroy',$revenueType->id_revenue_type)}}"
+                        method="POST" style="display:none;">
+                    @csrf
+                    @method('DELETE')
+                  </form>
+                @endif
+              </td>
+            </tr>
+          @endforeach
+        </tbody>
+      </table>
+{{-- {{$revenueTypeList->appends(request()->all()) }} --}}
+      <div class="d-flex  justify-content-center">
+        {{$revenueTypeList->appends(request()->all())}}
+        <div class="row align-items-center pl-3">
+          Exibindo {{$revenueTypeList->count()}}
+          de {{$revenueTypeList->total()}} registros
+        </div>
       </div>
     </div>
   </div>
@@ -57,5 +62,6 @@
       if(confirm("Você tem certeza que deseja realizar a inativação? "))
         document.getElementById('delete-form-'+ id).submit();
     }
+  
   </script>
 @endsection
