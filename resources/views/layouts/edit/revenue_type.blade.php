@@ -5,9 +5,9 @@
     <div class="row">
       <div class="col-11">
         @if(isset($item))
-          <h3>Editando Tipos de Recebimentos</h3>
+          <h3>Editando Tipos de Receitas</h3>
         @else
-          <h3>Cadastro de Tipos de Recebimentos</h3>
+          <h3>Cadastro de Tipos de Receitas</h3>
         @endif
       </div>
       <div class="">

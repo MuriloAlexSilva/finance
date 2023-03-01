@@ -20,7 +20,7 @@ class RevenueTypeController extends BaseController
     public function index()
     {
         $revenueTypeList = RevenueType::orderBy('name')
-                                      ->paginate(4);
+                                      ->paginate(10);
 
         return $this->RenderIndexPage(['revenueTypeList' => $revenueTypeList]);
     }

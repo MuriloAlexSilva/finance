@@ -44,9 +44,9 @@
         </tbody>
       </table>
 {{-- {{$revenueTypeList->appends(request()->all()) }} --}}
-      <div class="d-flex  justify-content-center">
-        {{$revenueTypeList->appends(request()->all())}}
-        <div class="row align-items-center pl-3">
+      <div class="d-flex justify-content-center">
+        <div class="pr">{{$revenueTypeList->appends(request()->all())}}</div>
+        <div class="d-flex align-items-center">
           Exibindo {{$revenueTypeList->count()}}
           de {{$revenueTypeList->total()}} registros
         </div>

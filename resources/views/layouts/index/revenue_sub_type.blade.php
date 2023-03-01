@@ -7,7 +7,7 @@
         <h3>Subtipos de Receitas</h3>
       </div>
       <div class="col-1">
-        <a href="{{route('revenue_type.create')}}" class="btn btn-outline">
+        <a href="{{route('revenue_sub_type.create')}}" class="btn btn-outline">
           <i class="fa fa-plus fa-lg" style="color:green"></i>
         </a>
       </div>
